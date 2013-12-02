@@ -47,7 +47,7 @@ PermitEmptyPasswords no
 # some PAM modules and threads)
 ChallengeResponseAuthentication no
 
-# Change to no to disable tunnelled clear text passwords
+# Disable tunnelled clear text passwords
 PasswordAuthentication no
 
 X11Forwarding yes
@@ -75,6 +75,3 @@ Subsystem sftp /usr/lib/openssh/sftp-server
 # PAM authentication, then enable this but set PasswordAuthentication
 # and ChallengeResponseAuthentication to 'no'.
 UsePAM yes
-
-# Disable Root Login
-PermitRootLogin no
