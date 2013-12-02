@@ -6,3 +6,25 @@
   tasks:
     - name: Install nginx
       apt: pkg=nginx state=present
+
+    - name: Update nginx.conf
+      copy: src=files/nginx.conf
+            dest=/etc/nginx/nginx.conf
+
+    - name: Add zameermanji nginx config
+      copy: src=files/nginx-zameermanji
+            dest=/etc/nginx/sites-available/zameermanji.conf
+
+    - name: remove default nginx site
+      file: path=/etc/nginx/sites-enabled/default
+            state=absent
+
+    - name: Ensure config symlink to enable config
+      file: src=/etc/nginx/sites-available/zameermanji.conf
+            dest=/etc/nginx/sites-enabled/zameermanji.conf
+            state=link
+      notify: Restart nginx
+
+  handlers:
+    - name: Restart nginx
+      action: service name=nginx state=restarted
