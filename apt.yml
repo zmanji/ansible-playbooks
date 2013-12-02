@@ -1,0 +1,13 @@
+---
+# This assumes a Debian box that has been bootstraped with ./bootstrap.yml
+- name: Update all packages
+  hosts: all
+  user: zmanji
+  sudo: True
+  sudo_user: root
+  tasks:
+    - name: Update apt cache
+      apt: update_cache=yes
+
+    - name: Update all packages to the latest version
+      apt: upgrade=full

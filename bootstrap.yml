@@ -1,0 +1,26 @@
+---
+# This playbook is a quick and dirty way of getting the machine boostrapped from
+# digital ocean. It assumes Debian v7 (wheezy).
+- name: Disable Root Login and Create User
+  hosts: all
+  user: root
+  tasks:
+    - name: Create User
+      action: user name=zmanji group=sudo shell=/bin/bash
+
+    - name: Add authorized ssh key
+      authorized_key: user=zmanji
+                      key="{{ lookup('file', '/Users/zmanji/.ssh/id_rsa.pub') }}"
+
+    - name: Enable passwordless sudo
+      copy: src=files/1-zmanji-sudo
+            dest=/etc/sudoers.d/1-zmanji-sudo
+
+    - name: Update sshd config (Disalbe root access)
+      copy: src=files/sshd_config
+            dest=/etc/ssh/sshd_config
+      notify: Restart ssh
+
+  handlers:
+    - name: Restart ssh
+      action: service name=ssh state=restarted
