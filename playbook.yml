@@ -12,11 +12,15 @@
       authorized_key: user=zmanji
                       key="{{ lookup('file', '/Users/zmanji/.ssh/id_rsa.pub') }}"
 
-    - name: Update sshd config
+    - name: Enable passwordless sudo
+      copy: src=files/1-zmanji-sudo
+            dest=/etc/sudoers.d/1-zmanji-sudo
+
+    - name: Update sshd config (Disalbe root access)
       copy: src=files/sshd_config
             dest=/etc/ssh/sshd_config
-      notify: Restart sshd
+      notify: Restart ssh
 
   handlers:
-    - name: Restart sshd
-      action: service name=sshd state=restarted
+    - name: Restart ssh
+      action: service name=ssh state=restarted
