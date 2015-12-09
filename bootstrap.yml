@@ -12,6 +12,9 @@
       authorized_key: user=zmanji
                       key="{{ lookup('file', '/Users/zmanji/.ssh/id_rsa.pub') }}"
 
+    - name: Install sudo
+      apt: pkg=sudo state=present
+
     - name: Enable passwordless sudo
       copy: src=files/1-zmanji-sudo
             dest=/etc/sudoers.d/1-zmanji-sudo
