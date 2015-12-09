@@ -3,10 +3,6 @@ server {
   server_name zameermanji.com;
   root /home/zmanji/public_html;
   index index.html;
-  gzip on;
-  gzip_min_length 1000;
-  gzip_comp_level 3;
-  gzip_types text/plain text/css text/javascript;
   source_charset utf-8;
   charset utf-8;
 
