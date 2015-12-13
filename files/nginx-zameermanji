@@ -28,6 +28,6 @@ server {
   ssl_certificate /etc/letsencrypt/live/www.zameermanji.com/fullchain.pem;
   ssl_certificate_key /etc/letsencrypt/live/www.zameermanji.com/privkey.pem;
   server_name www.zameermanji.com;
-  rewrite ^(.*) http://zameermanji.com$1 permanent;
+  return 301 http://zameermanji.com$request_uri;
 }
 
