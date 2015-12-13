@@ -18,6 +18,10 @@
       copy: src=files/nginx-zameermanji
             dest=/etc/nginx/sites-available/zameermanji.conf
 
+    - name: Add dhparam
+      copy: src=files/dhparam.pem
+            dest=/etc/nginx/dhparam.pem
+
     - name: remove default nginx site
       file: path=/etc/nginx/sites-enabled/default
             state=absent
