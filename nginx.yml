@@ -26,8 +26,5 @@
       file: src=/etc/nginx/sites-available/zameermanji.conf
             dest=/etc/nginx/sites-enabled/zameermanji.conf
             state=link
-      notify: Restart nginx
-
-  handlers:
-    - name: Restart nginx
-      action: service name=nginx state=restarted
+    - name: Restart Nginx
+      service: name=nginx state=restarted enabled=yes
