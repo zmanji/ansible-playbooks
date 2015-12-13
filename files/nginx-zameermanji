@@ -1,5 +1,11 @@
 server {
   listen 80;
+  server_name zameermanji.com;
+  # TODO(zmanji): Make this a 301 eventually.
+  return 302 https://zameermanji.com$request_uri;
+}
+
+server {
   listen 443 ssl;
   server_name zameermanji.com;
   ssl_certificate /etc/letsencrypt/live/www.zameermanji.com/fullchain.pem;
