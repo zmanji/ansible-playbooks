@@ -20,6 +20,11 @@ server {
     internal;
   }
 
+  location ~* \.(?:css|js)$ {
+    access_log off;
+    add_header Cache-Control "no-cache, public, must-revalidate, proxy-revalidate";
+  }
+
   location ~* \.(woff2)$ {
    expires 1M;
    access_log off;
