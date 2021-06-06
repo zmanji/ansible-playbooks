@@ -8,8 +8,8 @@ server {
 server {
   listen 443 ssl;
   server_name zameermanji.com;
-  ssl_certificate /etc/letsencrypt/live/www.zameermanji.com/fullchain.pem;
-  ssl_certificate_key /etc/letsencrypt/live/www.zameermanji.com/privkey.pem;
+  ssl_certificate /etc/letsencrypt/live/zameermanji.com/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/zameermanji.com/privkey.pem;
   root /home/zmanji/public_html;
   index index.html;
   source_charset utf-8;
@@ -20,7 +20,7 @@ server {
     internal;
   }
 
-  location ~* \.(ttf|ttc|otf|eot|woff)$ {
+  location ~* \.(woff2)$ {
    expires 1M;
    access_log off;
    add_header Cache-Control "public";
@@ -31,8 +31,8 @@ server {
 server {
   listen 80;
   listen 443 ssl;
-  ssl_certificate /etc/letsencrypt/live/www.zameermanji.com/fullchain.pem;
-  ssl_certificate_key /etc/letsencrypt/live/www.zameermanji.com/privkey.pem;
+  ssl_certificate /etc/letsencrypt/live/zameermanji.com/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/zameermanji.com/privkey.pem;
   server_name www.zameermanji.com;
   return 301 http://zameermanji.com$request_uri;
 }

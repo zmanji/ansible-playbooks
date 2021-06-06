@@ -1,4 +1,4 @@
 ---
 
-- include: apt.yml
-- include: nginx.yml
+- import_playbook: apt.yml
+- import_playbook: nginx.yml
