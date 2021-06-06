@@ -10,7 +10,7 @@
 
     - name: Add authorized ssh key
       authorized_key: user=zmanji
-                      key="{{ lookup('file', '/Users/zmanji/.ssh/id_rsa.pub') }}"
+                      key="{{ lookup('file', '/Users/zmanji/.ssh/id_ed25519.pub') }}"
 
     - name: Install sudo
       apt: pkg=sudo state=present
