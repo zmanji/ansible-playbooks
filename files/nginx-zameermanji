@@ -21,17 +21,11 @@ server {
   location /404/index.html {
     internal;
   }
-  location ~* \.(?:css|js)$ {
+  location ~* \.(?:css|js|woff2)$ {
     access_log off;
+    expires 1M;
     add_header Cache-Control "no-cache, public, must-revalidate, proxy-revalidate";
   }
-
-  location ~* \.(woff2)$ {
-   expires 1M;
-   access_log off;
-   add_header Cache-Control "public";
-  }
-
 }
 
 server {
